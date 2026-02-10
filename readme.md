@@ -7,45 +7,49 @@ This project builds a Convolutional Neural Network (CNN) from scratch to detect 
 Dataset used: **140k Real and Fake Faces** from Kaggle  
 - Training images: 100,000  
 - Validation images: 20,000  
+- Classes: `real`, `fake`
 
 ## 🏗 Model Architecture
-Custom CNN with:
+Custom CNN architecture with:
 - 3 Convolution layers
 - ReLU activations
-- MaxPooling
+- MaxPooling layers
 - Fully connected layers
 
 ## ⚙️ Training Setup
+
 | Parameter | Value |
 |----------|-------|
 | Image size | 224×224 |
 | Batch size | 32 |
 | Epochs | 5 |
 | Optimizer | Adam |
-| Loss | CrossEntropyLoss |
+| Loss function | CrossEntropyLoss |
 
 ## 📊 Results
 
 | Epoch | Training Loss | Validation Accuracy |
-|------|---------------|---------------------|
+|-------|---------------|---------------------|
 | 1 | 0.4772 | 86.65% |
 | 2 | 0.2338 | 91.59% |
 | 3 | 0.1349 | 94.53% |
 | 4 | 0.0895 | **95.33%** |
 | 5 | 0.0664 | 95.22% |
 
-Best model saved at **Epoch 4**
+Best model was saved at **Epoch 4** with **95.33% validation accuracy**.
 
-## 🚀 Features
-✔ Deep learning model built from scratch  
-✔ Trained on 120k+ face images  
-✔ Achieved 95%+ accuracy  
-✔ Model prediction visualized on sample images  
+## 🧾 Trained Model Weights
 
-## 💾 Model File
-`best_deepfake_model.pth`
+The trained model is too large to be stored directly on GitHub. You can download it from Kaggle here:
 
-## 🔮 Future Work
-- Add dropout layers
-- Try transfer learning (ResNet/EfficientNet)
-- Test on real-world DeepFake videos
+👉 https://www.kaggle.com/datasets/mondaldebasish05/deepfake-detector-model-weights-cnn-from-scratch
+
+---
+
+## 🧠 How to Use the Model
+
+You can load the saved model weights into your PyTorch model using:
+
+```python
+model.load_state_dict(torch.load("best_deepfake_model.pth"))
+model.eval()
